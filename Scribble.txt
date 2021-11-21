@@ -1,0 +1,29 @@
+Perlu tau ada gak sih pencatatan inquiry
+
+Perlu tanya tipe transaksi
+
+
+
+Inquiry : Tahap ketika ada pembahasan kebutuhan dari calon klien(tanya2 ke kita soal)
+Quotation : Surat penawaran yang dibikin ketika ada jelas.
+Invoice : penagihan yang berdasarkan quotation yang disetujui.
+
+Color Pallete Medialogy
+abu : #8d8d8d
+oren gelap : #e57b25
+oren merah : #ff6600
+oren Terang : rgb(248, 154, 52) 
+Hitam : #262626
+
+Inget ada konsep parent and child juga css
+kalo mau nentuin min-height 100% itu dia ngikutin orang tuanya jadi class2 parentnya kudu punya height yang 100% sampe htmlnya
+
+User_Table
+User_Profile_Table
+Inventory_Table
+Vendor_Table
+Customer_Table
+Transaction_Table
+Inquiry_Table
+Quotation_Table
+Invoice_Table
