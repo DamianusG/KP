@@ -1,8 +1,9 @@
-  <div id="sidebar">
+  <div class="nav-side" id="sidebar">
     <div class="p-3 text-white bg-dark sidebar flex-grow-1" style="width: 280px;">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-4">Sidebar</span>
       </a>
+      <!-- <svg class="toggle__expand" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg> -->
       <hr>
         <ul class="nav nav-pills flex-column mb-auto flex-grow-1">
           <li class="nav-item">
