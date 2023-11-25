@@ -17,10 +17,13 @@
                     <div class="collapse navbar-collapse flex-1" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="App/Session/signup.php">Sign Up</a>
+                                <a class="nav-link active" aria-current="page" href="CreateUser.php">Sign Up</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="App/Session/login.php">Log In</a>
+                                <a class="nav-link active" aria-current="page" href="login.php">Log In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="logout.php">Log Out</a>
                             </li>
                         </ul>
                     </div>
