@@ -29,11 +29,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <!-- Header End -->      
            
         <div class="container-fluid-main">
-            <div class="inner-container-fluid flex-grow-1">
+            <div class="inner-container-fluid flex flex-grow-1">
                 <!-- Sidebar -->
                 <?php include "App/Layout/sidebar.php";?>
                 <!-- Sidebar End -->  
-                <div id="content">
+                <div id="content" class="flex-grow-1">
                     <?php echo "<h1 id='content-text-cust' class='text-center display-4'>Welcome!<br>How may I assist you today?</h1>";?>  
                 </div>
             </div>
