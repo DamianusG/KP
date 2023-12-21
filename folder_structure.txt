@@ -1,7 +1,7 @@
 C:\xampp\htdocs\KP\.gitattributes
 C:\xampp\htdocs\KP\App
 C:\xampp\htdocs\KP\createInventory.php
-C:\xampp\htdocs\KP\CreateUser.php
+C:\xampp\htdocs\KP\createUser.php
 C:\xampp\htdocs\KP\folder_structure.txt
 C:\xampp\htdocs\KP\index copy.php
 C:\xampp\htdocs\KP\index.php

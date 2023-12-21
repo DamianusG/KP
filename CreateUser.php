@@ -9,14 +9,24 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 
 require_once "App/database/dbconnect.php";
+require('App/helper/userValidator.php');
 
 if(isset($_POST['Submit'])){
-    echo 'Tombol Submit ditekan';
+    // echo 'Tombol Submit ditekan';
+    $validation = new CreateUserValidator($_POST);
+    $errors = $validation->validateCreateUserForm();
+    // if(count($errors) > 0){
+    //     $_SESSION['errors'] = $errors;
+    //     header('Location: CreateUser.php');
+    //     exit();
+    // }
+
+
 }
 
 $db = $mysqli;
 $tableName = "appuser";
-$columns = ['idUser', 'userName', 'userPassword', 'idRole', 'namaLengkap', 'tanggalLahir', 'alamat', 'jabatan', 'noTelp', 'statusAktif'];
+$columns = ['idUser', 'userName', 'userPassword', 'idRole', 'namaLengkap', 'tanggalLahir', 'alamat', 'jabatan', 'noTelp'];
 $fetchData = fetch_data($db, $tableName, $columns);
 function fetch_data($db, $tableName, $columns)
 {
@@ -86,13 +96,18 @@ function fetch_data($db, $tableName, $columns)
                         <div class="row mb-3">
                             <label for="inputUserName" class="col-sm-2 col-form-label">User Name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputUserName" required>
+                                <input type="text" class="form-control" id="inputUserName" name="userName" required>
+                            </div>
+                            <div class="error">
+                                <?php
+                                    echo $errors['userName'] ?? '';
+                                ?>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputUserPassword" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputUserPassword" required>
+                                <input type="password" class="form-control" id="inputUserPassword" name="userPassword" required>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -107,31 +122,31 @@ function fetch_data($db, $tableName, $columns)
                         <div class="row mb-3">
                             <label for="inputNamaLengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNamaLengkap" required>
+                                <input type="text" class="form-control" id="inputNamaLengkap" name="namaLengkap" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputTanggalLahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                             <div class="col-sm-10">
-                                <input type="date" class="form-control" id="inputDate" name="inputTanggalLahir" required>
+                                <input type="date" class="form-control" id="inputTanggalLahir" name="tanggalLahir" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputAlamat" class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputAlamat">
+                                <input type="text" class="form-control" id="inputAlamat" name="alamat">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputJabatan" class="col-sm-2 col-form-label">Jabatan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputJabatan" required>
+                                <input type="text" class="form-control" id="inputJabatan" name="jabatan" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputNomorTelepon" class="col-sm-2 col-form-label">Nomor Telepon</label>
                             <div class="col-sm-10">
-                                <input type="tel" class="form-control" id="inputPhoneNumber" name="inputNomorTelepon" required>
+                                <input type="tel" class="form-control" id="inputPhoneNumber" name="noTelp" required>
                             </div>
                         </div>
                         <button type="submit" name="Submit" class="btn btn-primary">Sign in</button>
