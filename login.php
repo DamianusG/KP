@@ -10,28 +10,17 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
  
 // Include config file
 require_once "App/database/dbconnect.php";
- 
+require('App/helper/userValidator.php');
+
 // Define variables and initialize with empty values
 $userName = $userPassword = "";
 $username_err = $password_err = $login_err = "";
  
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if(isset($_POST['submitLogin'])){
  
-    // Check if username is empty
-    if(empty(trim($_POST["userName"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $userName = trim($_POST["userName"]);
-    }
-    
-    // Check if password is empty
-    if(empty(trim($_POST["userPassword"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $userPassword = trim($_POST["userPassword"]);
-    }
-
+    $validation = new UserLoginValidator($_POST);
+    $errors = $validation->validateUserLoginForm();
 
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
@@ -104,15 +93,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <form>
                 <div class="mb-3">
                     <label for="userName" class="form-label">Username</label>
-                    <input type="text" name="userName" class="form-control">
-                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                    <input type="text" name="userName" value="<?php echo htmlspecialchars($_POST['userName']) ?? '' ?>" class="form-control">
+                    <div class="error">
+                        <?php
+                            echo $errors['userName'] ?? '';
+                        ?>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="userPassword" class="form-label">Password</label>
                     <input type="password" name="userPassword" class="form-control">
-                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                    <div class="error">
+                        <?php
+                            echo $errors['userPassword'] ?? '';
+                        ?>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Masuk</button>
+                <button type="submit" name="submitLogin" class="btn btn-primary">Masuk</button>
             </form>
         </div>
     </div>

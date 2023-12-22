@@ -131,7 +131,7 @@
             $this->data = $c_user_post_data;
         }
 
-        public function validateCreateUserForm() {
+        public function validateUserLoginForm() {
             foreach (self::$fields as $field) {
                 if(!array_key_exists($field, $this->data)) {
                     trigger_error("$field is not present in the data");
