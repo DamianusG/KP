@@ -7,75 +7,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: index.php");
     exit;
 }
- 
-// Include config file
-require_once "App/database/dbconnect.php";
-require('App/helper/userValidator.php');
 
-// Define variables and initialize with empty values
-$userName = $userPassword = "";
-$username_err = $password_err = $login_err = "";
- 
-// Processing form data when form is submitted
-if(isset($_POST['submitLogin'])){
- 
-    $validation = new UserLoginValidator($_POST);
-    $errors = $validation->validateUserLoginForm();
-
-    // Validate credentials
-    if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
-        $sql = "SELECT idUser, userName, userPassword FROM appuser WHERE userName = ?";
-        
-        if($stmt = $mysqli->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("s", $param_username);
-            
-            // Set parameters
-            $param_username = $userName;
-            
-            // Attempt to execute the prepared statement
-            if($stmt->execute()){
-                // Store result
-                $stmt->store_result();
-                
-                // Check if username exists, if yes then verify password
-                if($stmt->num_rows == 1){                    
-                    // Bind result variables
-                    $stmt->bind_result($id, $username, $stored_password);
-                    if($stmt->fetch()){
-                        // if(password_verify($userPassword, $hashed_password)){
-                        if($userPassword === $stored_password){
-                            // Password is correct, so start a new session
-                            session_start();
-                            
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                            
-                            // Redirect user to welcome page
-                            header("location: index.php");
-                        } else{
-                            // Password is not valid, display a generic error message
-                            $login_err = "Invalid username or password.";
-                        }
-                    }
-                } else{
-                    // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            $stmt->close();
-        }
-    }
-    
-    // Close connection
-    $mysqli->close();
+if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
+    // Retrieve and use the errors
+    $errors = $_SESSION['errors'];
 }
 ?>
  
@@ -90,10 +25,10 @@ if(isset($_POST['submitLogin'])){
         <div class="container-sm wrapper" style="border: 1px solid black;">
             <h2>Login</h2>
             <p>Please fill in your credentials to login.</p>
-            <form>
+            <form action="App/controller/loginController.php" method="POST">
                 <div class="mb-3">
-                    <label for="userName" class="form-label">Username</label>
-                    <input type="text" name="userName" value="<?php echo htmlspecialchars($_POST['userName']) ?? '' ?>" class="form-control">
+                    <label for="userName" class="form-label">UserName</label>
+                    <input type="text" name="userName" id="userName" value='<?php echo isset($_SESSION['userName']) ? htmlspecialchars($_SESSION['userName']) : ''; ?>' class="form-control">
                     <div class="error">
                         <?php
                             echo $errors['userName'] ?? '';
@@ -102,7 +37,7 @@ if(isset($_POST['submitLogin'])){
                 </div>
                 <div class="mb-3">
                     <label for="userPassword" class="form-label">Password</label>
-                    <input type="password" name="userPassword" class="form-control">
+                    <input type="password" name="userPassword" id="userPassword" class="form-control">
                     <div class="error">
                         <?php
                             echo $errors['userPassword'] ?? '';
