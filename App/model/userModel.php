@@ -1,6 +1,6 @@
 <?php 
-    // require_once($_SERVER['DOCUMENT_ROOT'] . '/KP/App/database/dbconnect.php');
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/App/database/dbconnect.php');
+    // require_once($_SERVER['DOCUMENT_ROOT'] . 'KP/App/database/dbconnect.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . 'App/database/dbconnect.php');
     class UserModel {
         
         private $userDataSet = [];

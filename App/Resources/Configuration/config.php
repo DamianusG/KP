@@ -2,10 +2,10 @@
     function determineBaseURL() {
         if ($_SERVER['HTTP_HOST'] === 'localhost') {
             // return 'http://localhost/KP';
-            return 'http://localhost:8080/KP';
+            return 'http://localhost:8080/KP/';
         } else {
             // Replace 'example.com' with your actual production domain
-            return 'http://kp.dgemilang.top/KP';
+            return 'http://kp.dgemilang.top/KP/';
         }
     }
     
@@ -28,6 +28,6 @@
     $baseURL = determineBaseURL();
 
     // $baseURLdev = 'http://localhost/KP';
-    $baseURLdev = 'http://localhost:8080/KP';
+    $baseURLdev = 'http://localhost:8080/KP/';
     $baseURLprod = 'https://kp.dgemilang.top/';
 ?>
