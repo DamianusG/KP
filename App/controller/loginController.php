@@ -1,15 +1,16 @@
 <?php 
 
 session_start();
+
 // Include config file
-// require_once ($_SERVER['DOCUMENT_ROOT'] . "/KP/App/database/dbconnect.php");
-// require_once ($baseURLdev . "/App/database/dbconnect.php");
-// require_once ($_SERVER['DOCUMENT_ROOT'] . "/KP/App/model/userModel.php");
-require_once ($_SERVER['DOCUMENT_ROOT'] . "/App/Resources/Configuration/config.php");
-// require_once ($_SERVER['DOCUMENT_ROOT'] . "/KP/App/Resources/Configuration/config.php");
-require_once ($_SERVER['DOCUMENT_ROOT'] . "/App/Resources/Configuration/config.php");
-// require_once( $_SERVER['DOCUMENT_ROOT'] . "/KP/App/helper/userValidator.php");
-require( $_SERVER['DOCUMENT_ROOT'] . "/App/helper/userValidator.php");
+// require_once ($_SERVER['DOCUMENT_ROOT'] . '/KP/App/database/dbconnect.php');
+// require_once ($baseURLdev . "/App/database/dbconnect.php');
+// require_once ($_SERVER['DOCUMENT_ROOT'] . '/KP/App/model/userModel.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/App/model/userModel.php');
+// require_once ($_SERVER['DOCUMENT_ROOT'] . '/KP/App/Resources/Configuration/config.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/App/Resources/Configuration/config.php');
+// require_once( $_SERVER['DOCUMENT_ROOT'] . '/KP/App/helper/userValidator.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/App/helper/userValidator.php');
 
 // Define variables and initialize with empty values
 $userName = $userPassword = "";

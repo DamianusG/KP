@@ -8,7 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
-require_once "App/database/dbconnect.php";
+require_once 'App/database/dbconnect.php';
 
 $db = $mysqli;
 $tableName = "inventory";

@@ -1,5 +1,5 @@
 <?php
-require_once "App/database/dbconnect.php";
+require_once 'App/database/dbconnect.php';
 
 // Initialize the session
 session_start();
