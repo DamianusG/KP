@@ -4,12 +4,12 @@ session_start();
 // Include config file
 // require_once ($_SERVER['DOCUMENT_ROOT'] . "/KP/App/database/dbconnect.php");
 // require_once ($baseURLdev . "/App/database/dbconnect.php");
-require_once ($_SERVER['DOCUMENT_ROOT'] . "/KP/App/model/userModel.php");
+// require_once ($_SERVER['DOCUMENT_ROOT'] . "/KP/App/model/userModel.php");
+require_once ($_SERVER['DOCUMENT_ROOT'] . "/App/Resources/Configuration/config.php");
 // require_once ($_SERVER['DOCUMENT_ROOT'] . "/KP/App/Resources/Configuration/config.php");
-require_once ($_SERVER['DOCUMENT_ROOT'] . "/KP/App/Resources/Configuration/config.php");
-// require_once ($baseURLdev . "/App/Resources/Configuration/config.php");
-require_once( $_SERVER['DOCUMENT_ROOT'] . "/KP/App/helper/userValidator.php");
-// require( $baseURLdev . "/App/helper/userValidator.php");
+require_once ($_SERVER['DOCUMENT_ROOT'] . "/App/Resources/Configuration/config.php");
+// require_once( $_SERVER['DOCUMENT_ROOT'] . "/KP/App/helper/userValidator.php");
+require( $_SERVER['DOCUMENT_ROOT'] . "/App/helper/userValidator.php");
 
 // Define variables and initialize with empty values
 $userName = $userPassword = "";
@@ -41,9 +41,10 @@ if(isset($_POST['submitLogin'])){
             echo $val;
          }
         // echo $_SESSION['errors'];
-        $loginViewPath = $baseURLdev . '/login.php';
+        // $loginViewPath = $baseURLdev . '/login.php';
+        $loginViewPath = $baseURLprod . '/login.php';
         echo $loginViewPath;
-        // header('Location: ' . $loginViewPath);
+        header('Location: ' . $loginViewPath);
         exit;
     }
 
@@ -54,7 +55,8 @@ if(isset($_POST['submitLogin'])){
     // echo $user->errors;
     if(!empty($errors)){
         $_SESSION['errors'] = $errors;
-        $loginViewPath = $baseURLdev . '/index.php';
+        // $loginViewPath = $baseURLdev . '/index.php';
+        $loginViewPath = $baseURLprod . '/index.php';
         echo $loginViewPath;
         header('Location: ' . $loginViewPath);
         exit;
@@ -64,7 +66,8 @@ if(isset($_POST['submitLogin'])){
         $_SESSION["username"] = $userData['username'];  
         // echo $_SESSION["id"];
         // echo $_SESSION["username"];
-        $loginViewPath = $baseURLdev . '/index.php';
+        // $loginViewPath = $baseURLdev . '/index.php';
+        $loginViewPath = $baseURLprod . '/index.php';
         echo $loginViewPath;
         header('Location: ' . $loginViewPath);
         exit;

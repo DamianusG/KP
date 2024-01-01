@@ -1,7 +1,7 @@
 <?php
 
-require ($_SERVER['DOCUMENT_ROOT'] . "/KP/App/database/dbconfig.php");
-// require ($_SERVER['DOCUMENT_ROOT'] . "/App/database/dbconfig.php");
+// require ($_SERVER['DOCUMENT_ROOT'] . "/KP/App/database/dbconfig.php");
+require ($_SERVER['DOCUMENT_ROOT'] . "/App/database/dbconfig.php");
 
 class MysqlConn extends Dbconfig {
 
