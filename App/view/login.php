@@ -1,12 +1,12 @@
 <?php
 // Initialize the session
-session_start();
+// session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: dashboard.php");
-    exit;
-}
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+//     header("location: dashboard.php");
+//     exit;
+// }
 
 if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
     // Retrieve and use the errors
@@ -17,7 +17,7 @@ if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include "App/Layout/head.php";?>
+    <?php include ($_SERVER['DOCUMENT_ROOT'] . '/KP/App/Layout/head.php');?>
     <title>Login</title>
 </head>
 <body>
@@ -79,6 +79,6 @@ if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
         </form> -->
 
 
-    <?php include "App/Layout/bootstrap-js.php";?>
+    <?php include ($_SERVER['DOCUMENT_ROOT'] . '/KP/App/Layout/bootstrap-js.php');?>
 </body>
 </html>

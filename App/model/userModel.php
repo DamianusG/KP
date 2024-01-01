@@ -1,6 +1,6 @@
 <?php 
-    // require_once($_SERVER['DOCUMENT_ROOT'] . '/KP/App/database/dbconnect.php');
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/App/database/dbconnect.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/KP/App/database/dbconnect.php');
+    // require_once($_SERVER['DOCUMENT_ROOT'] . '/App/database/dbconnect.php');
     class UserModel {
         
         private $userDataSet = [];
@@ -74,12 +74,29 @@
             // prepare Sql Statement
             $sql = "SELECT * FROM appuser";
 
-            // execute Sql Statement store in result
-            $result = $mysqlconn->conn->query($sql);
-
-            $data = $result->fetch_all(MYSQLI_ASSOC);
-
-            return $data;
+            if($stmt = $mysqlconn->conn->prepare($sql)) {
+                // Execute the statement
+                $stmt->execute();
+        
+                // Get the result set
+                $result = $stmt->get_result();
+        
+                // Fetch the data as an associative array
+                $data = $result->fetch_all(MYSQLI_ASSOC);
+        
+                // Close the statement
+                $stmt->close();
+        
+                // Close the connection
+                $mysqlconn->conn->close();
+        
+                // Return the fetched data
+                return $data;
+            } else {
+                // Handle the case where preparing the statement fails
+                echo "Oops! Something went wrong. Please try again later.";
+                return null;
+            }
         }
     }
 ?>

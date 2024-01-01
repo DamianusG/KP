@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirect /request to index.php
+    RewriteRule ^request$ index.php [L]
+</IfModule>

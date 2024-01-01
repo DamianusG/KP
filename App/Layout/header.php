@@ -18,11 +18,11 @@
                             <!-- <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="createUser.php">Sign Up</a>
                             </li> -->
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="login.php">Log In</a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="logout.php">Log Out</a>
+                                <a class="nav-link active" aria-current="page" href="index.php?page=logout">Log Out</a>
                             </li>
                         </ul>
                     </div>

@@ -9,11 +9,11 @@ class Dbconfig {
         // Host name
         $this->dbsettings['DB_SERVER'] = 'localhost';
         // Database name
-        $this->dbsettings['DB_USERNAME'] = 'dgemilang_kp';
+        $this->dbsettings['DB_USERNAME'] = 'root';
         // Username
-        $this->dbsettings['DB_PASSWORD'] = 'Brigandin3';
+        $this->dbsettings['DB_PASSWORD'] = '';
         // Password
-        $this->dbsettings['DB_NAME'] = 'dgemilang_kp_inventory';
+        $this->dbsettings['DB_NAME'] = 'inventory';
     }
     // protected $serverName;
     // protected $userName;

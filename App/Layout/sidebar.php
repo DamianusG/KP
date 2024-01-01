@@ -6,7 +6,7 @@
           <!-- <svg class="toggle__expand" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg> -->
           <ul class="nav nav-pills flex-column mb-auto flex-grow-1">
               <li class="nav-item">
-                  <a href="dashboard.php" class="nav-link active" aria-current="page">
+                  <a href="index.php?page=dashboard" class="nav-link active" aria-current="page">
                       <svg class="bi me-2" width="16" height="16">
                           <use xlink:href="#home" />
                       </svg>
@@ -14,7 +14,7 @@
                   </a>
               </li>
               <li>
-                  <a href="inventory.php" class="nav-link text-white">
+                  <a href="index.php?page=inventory" class="nav-link text-white">
                       <svg class="bi me-2" width="16" height="16">
                           <use xlink:href="#table" />
                       </svg>
@@ -22,7 +22,7 @@
                   </a>
               </li>
               <li>
-                  <a href="arsip.php" class="nav-link text-white">
+                  <a href="index.php?page=arsip" class="nav-link text-white">
                       <svg class="bi me-2" width="16" height="16">
                           <use xlink:href="#grid" />
                       </svg>
@@ -30,7 +30,7 @@
                   </a>
               </li>
               <li>
-                  <a href="userController.php" class="nav-link text-white">
+                  <a href="index.php?page=user" class="nav-link text-white">
                       <svg class="bi me-2" width="16" height="16">
                           <use xlink:href="#grid" />
                       </svg>
