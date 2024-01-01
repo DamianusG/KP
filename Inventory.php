@@ -1,4 +1,6 @@
 <?php
+require_once "App/database/dbconnect.php";
+
 // Initialize the session
 session_start();
 
@@ -8,7 +10,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
-require_once "App/database/dbconnect.php";
 
 $db = $mysqli;
 $tableName = "inventory";
@@ -62,13 +63,15 @@ function fetch_data($db, $tableName, $columns)
 <!-- Header End -->
 
 <div class="container-fluid-main">
-    <div class="inner-container-fluid flex-grow-1">
+    <div class="inner-container-fluid flex flex-grow-1">
         <!-- Sidebar -->
         <?php include "App/Layout/sidebar.php"; ?>
         <!-- Sidebar End -->
-        <div id="content">
+        <div id="content" class="flex-grow-1">
             <?php echo "<h1 id='content-text-cust' class='text-center display-4'>Table Inventory</h1>"; ?>
-            <table>
+
+            <div class="container-fluid">
+            <table class="table table-hover table-striped">
                 <thead>
                     <th>No.</th>
                     <th>Nama Barang</th>
@@ -100,6 +103,7 @@ function fetch_data($db, $tableName, $columns)
                     } ?>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </div>

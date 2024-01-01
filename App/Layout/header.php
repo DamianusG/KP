@@ -1,4 +1,3 @@
-    <body> 
  
         <header>
             <nav class="navbar navbar-expand-md navbar-dark sticky-top">
@@ -16,9 +15,9 @@
                     </button>
                     <div class="collapse navbar-collapse flex-1" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="CreateUser.php">Sign Up</a>
-                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="createUser.php">Sign Up</a>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="login.php">Log In</a>
                             </li>
