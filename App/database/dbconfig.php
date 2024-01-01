@@ -9,11 +9,11 @@ class Dbconfig {
         // Host name
         $this->dbsettings['DB_SERVER'] = 'localhost';
         // Database name
-        $this->dbsettings['DB_USERNAME'] = 'root';
+        $this->dbsettings['DB_USERNAME'] = 'dgemilang_kp';
         // Username
-        $this->dbsettings['DB_PASSWORD'] = '';
+        $this->dbsettings['DB_PASSWORD'] = 'Brigandin3';
         // Password
-        $this->dbsettings['DB_NAME'] = 'inventory';
+        $this->dbsettings['DB_NAME'] = 'dgemilang_kp_inventory';
     }
     // protected $serverName;
     // protected $userName;
@@ -35,8 +35,14 @@ class Dbconfig {
 // define('DB_PASSWORD', '');
 // define('DB_NAME', 'inventory');
 
-/* Database credentials. gunakan untuk production.*/
+/* Database credentials. gunakan untuk staging.*/
 // define('DB_USERNAME', 'dgemilang_stagingkp');
 // define('DB_PASSWORD', 'Brigandin3');
 // define('DB_NAME', 'dgemilang_stagingkp_inventory');
+
+/* Database credentials. gunakan untuk production.*/
+// define('DB_USERNAME', 'dgemilang_kp');
+// define('DB_PASSWORD', 'Brigandin3');
+// define('DB_NAME', 'dgemilang_kp_inventory');
+
 ?>
