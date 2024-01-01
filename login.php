@@ -26,6 +26,11 @@ if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
             <h2>Login</h2>
             <p>Please fill in your credentials to login.</p>
             <form action="App/controller/loginController.php" method="POST">
+                <div class="error">
+                    <?php
+                        echo $errors['loginErr'] ?? '';
+                    ?>
+                </div>
                 <div class="mb-3">
                     <label for="userName" class="form-label">UserName</label>
                     <input type="text" name="userName" id="userName" value='<?php echo isset($_SESSION['userName']) ? htmlspecialchars($_SESSION['userName']) : ''; ?>' class="form-control">

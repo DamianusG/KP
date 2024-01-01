@@ -32,8 +32,8 @@
             if (empty($val)) {
                 $this->addError('userName', 'User Name is required');
             } else {
-                if (!preg_match("/^[a-zA-Z0-9]{6,12}$/", $val)) {
-                    $this->addError('userName', 'User Name must be alphanumeric with 6-12 characters');
+                if (!preg_match("/^[a-zA-Z0-9]{6,20}$/", $val)) {
+                    $this->addError('userName', 'User Name must be alphanumeric with 6-20 characters');
                 }
             }
         }
@@ -145,12 +145,14 @@
         }
 
         private function validateUserName() {
+            // echo $this->data['userName'];
+            // exit;
             $val = trim($this->data['userName']);
             if (empty($val)) {
                 $this->addError('userName', 'User Name is required');
             } else {
-                if (!preg_match("/^[a-zA-Z0-9]{6,12}$/", $val)) {
-                    $this->addError('userName', 'User Name must be alphanumeric with 6-12 characters');
+                if (!preg_match("/^[a-zA-Z0-9]{6,20}$/", $val)) {
+                    $this->addError('userName', 'User Name must be alphanumeric with 6-20 characters');
                 }
             }
         }
