@@ -1,6 +1,6 @@
 <?php 
-    // require_once($_SERVER['DOCUMENT_ROOT'] . 'KP/App/database/dbconnect.php');
-    require_once($_SERVER['DOCUMENT_ROOT'] . 'App/database/dbconnect.php');
+    // require_once($_SERVER['DOCUMENT_ROOT'] . '/KP/App/database/dbconnect.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/App/database/dbconnect.php');
     class UserModel {
         
         private $userDataSet = [];
@@ -39,16 +39,6 @@
                                     'id' => $id,
                                     'username' => $username
                                 ];
-
-                                // session_start();
-                                
-                                // Store data in session variables
-                                // $_SESSION["loggedin"] = true;
-                                // $_SESSION["id"] = $id;
-                                // $_SESSION["username"] = $username;                            
-                                
-                                // Redirect user to welcome page
-                                // header("location: index.php");
                             } else{
                                 // Password is not valid, display a generic error message
                                 $this->errors['loginErr'] = "Invalid username or password.";
@@ -77,6 +67,19 @@
             return $this->userDataSet;
         }
 
-    // Other methods...
+        public function getUserTableData(){
+            // connect Database
+            $mysqlconn = new MysqlConn();
+
+            // prepare Sql Statement
+            $sql = "SELECT * FROM appuser";
+
+            // execute Sql Statement store in result
+            $result = $mysqlconn->conn->query($sql);
+
+            $data = $result->fetch_all(MYSQLI_ASSOC);
+
+            return $data;
+        }
     }
 ?>
