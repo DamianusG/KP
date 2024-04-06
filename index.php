@@ -3,9 +3,9 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/KP/App/Resources/Configuration/confi
 // require_once ($_SERVER['DOCUMENT_ROOT'] . '/App/Resources/Configuration/config.php');
 // Initialize the session
 if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
+{ 
+    session_start(); 
+} 
  
 // Check if the user is logged in, if not then redirect him to login page
 // if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
@@ -28,8 +28,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             case 'dashboard':
                 include 'App/controller/dashboardController.php';
                 break;
-            case 'userTable':
+            case 'user':
                 include 'App/controller/userController.php';
+                break;
+            case 'user-create':
+                include 'App/controller/user/createUserController.php';
+                break;
+            case 'user-update':
+                include 'App/controller/user/updateUserController.php';
+                break;
+            case 'user-delete':
+                include 'App/controller/user/deleteUserController.php';
                 break;
             case 'logout':
                 include 'App/controller/logoutController.php';

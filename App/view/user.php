@@ -1,7 +1,6 @@
 <?php
 // Initialize the session
-require_once 'App/database/dbconnect.php';
-session_start();
+// require_once 'App/database/dbconnect.php';
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
@@ -9,49 +8,44 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
-$db = $mysqli;
-$tableName = "appuser";
-$columns = ['idUser', 'userName', 'userPassword', 'idRole', 'namaLengkap', 'tanggalLahir', 'alamat', 'jabatan', 'noTelp', 'statusAktif'];
-$fetchData = fetch_data($db, $tableName, $columns);
-function fetch_data($db, $tableName, $columns)
-{
-    if (empty($db)) {
-        $msg = "Database connection error";
-    } elseif (empty($columns) || !is_array($columns)) {
-        $msg = "columns Name must be defined in an indexed array";
-    } elseif (empty($tableName)) {
-        $msg = "Table Name is empty";
-    } else {
-        $columnName = implode(", ", $columns);
-        $query = "SELECT " . $columnName . " FROM $tableName" . " ORDER BY idUser ASC";
-        $result = $db->query($query);
-        if ($result == true) {
-            if ($result->num_rows > 0) {
-                $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                $msg = $row;
-            } else {
-                $msg = "No Data Found";
-            }
-        } else {
-            $msg = mysqli_error($db);
-        }
-    }
-    return $msg;
-}
+// $db = $mysqli;
+// $tableName = "appuser";
+// $columns = ['idUser', 'userName', 'userPassword', 'idRole', 'namaLengkap', 'tanggalLahir', 'alamat', 'jabatan', 'noTelp', 'statusAktif'];
+// $fetchData = fetch_data($db, $tableName, $columns);
+// function fetch_data($db, $tableName, $columns)
+// {
+//     if (empty($db)) {
+//         $msg = "Database connection error";
+//     } elseif (empty($columns) || !is_array($columns)) {
+//         $msg = "columns Name must be defined in an indexed array";
+//     } elseif (empty($tableName)) {
+//         $msg = "Table Name is empty";
+//     } else {
+//         $columnName = implode(", ", $columns);
+//         $query = "SELECT " . $columnName . " FROM $tableName" . " ORDER BY idUser ASC";
+//         $result = $db->query($query);
+//         if ($result == true) {
+//             if ($result->num_rows > 0) {
+//                 $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//                 $msg = $row;
+//             } else {
+//                 $msg = "No Data Found";
+//             }
+//         } else {
+//             $msg = mysqli_error($db);
+//         }
+//     }
+//     return $msg;
+// }
 ?>
     
     <!DOCTYPE html>
         <html lang="en">
         <!-- head -->
         <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="App/style.css">
-        <title>Aplikasi Inventory dan Arsip</title>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <?php include "App/Layout/head.php";?>
         <script src="App/Js/script.js"></script>
+        <title>Aplikasi Inventory dan Arsip - User Management</title>
         </head>
         <!-- head - END-->
 
@@ -69,9 +63,9 @@ function fetch_data($db, $tableName, $columns)
                     
                     <div class="container-fluid">
                         <div class="d-flex">
-                            <div class="p-2"><a href="createUser.php"><button class="btn btn-primary">Add User</button></a></div>
-                            <div class="p-2"><a href="updateUser.php"><button class="btn btn-primary">Update User</button></a></div>
-                            <div class="p-2"><a href="deleteUser.php"><button class="btn btn-primary">Terminate User</button></a></div>
+                            <div class="p-2"><a href="index.php?page=user-create"><button class="btn btn-primary">Add User</button></a></div>
+                            <div class="p-2"><a href="index.php?page=user-update"><button class="btn btn-primary">Update User</button></a></div>
+                            <div class="p-2"><a href="index.php?page=user-delete"><button class="btn btn-primary">Terminate User</button></a></div>
                         </div>
                     </div>
                     <div class="container-fluid">
@@ -89,20 +83,20 @@ function fetch_data($db, $tableName, $columns)
                             </thead>
                             <tbody>
                                 <?php
-                                if (is_array($fetchData)) {
+                                if (is_array($userDatas)) {
                                     $sn = 1;
-                                    foreach ($fetchData as $data) {
+                                    foreach ($userDatas as $userdata) {
                                 ?>
                                         <tr>
                                             <td><?php echo $sn; ?></td>
-                                            <td><?php echo $data['userName'] ?? ''; ?></td>
-                                            <td><?php echo $data['idRole'] ?? ''; ?></td>
-                                            <td><?php echo $data['namaLengkap'] ?? ''; ?></td>
-                                            <td><?php echo $data['tanggalLahir'] ?? ''; ?></td>
-                                            <td><?php echo $data['alamat'] ?? ''; ?></td>
-                                            <td><?php echo $data['jabatan'] ?? ''; ?></td>
-                                            <td><?php echo $data['noTelp'] ?? ''; ?></td>
-                                            <td><?php echo $data['statusAktif'] ?? ''; ?></td>
+                                            <td><?php echo $userdata['userName'] ?? ''; ?></td>
+                                            <td><?php echo $userdata['idRole'] ?? ''; ?></td>
+                                            <td><?php echo $userdata['namaLengkap'] ?? ''; ?></td>
+                                            <td><?php echo $userdata['tanggalLahir'] ?? ''; ?></td>
+                                            <td><?php echo $userdata['alamat'] ?? ''; ?></td>
+                                            <td><?php echo $userdata['jabatan'] ?? ''; ?></td>
+                                            <td><?php echo $userdata['noTelp'] ?? ''; ?></td>
+                                            <td><?php echo $userdata['statusAktif'] ?? ''; ?></td>
                                         </tr>
                                     <?php
                                         $sn++;

@@ -65,7 +65,7 @@
             if (empty($val)) {
                 $this->addError('namaLengkap', 'Name is required');
             } else {
-                if (!preg_match("/^[a-zA-Z]+$/", $val)) {
+                if (!preg_match("/^[a-zA-Z ]+$/", $val)) {
                     $this->addError('namaLengkap', 'Nama Lengkap must be alphanumeric');
                 }
             }
@@ -87,7 +87,7 @@
             if (empty($val)) {
                 $this->addError('alamat', 'Alamat is required');
             } else {
-                if (!preg_match("/^[a-zA-Z0-9]+$/", $val)) {
+                if (!preg_match("/^[a-zA-Z0-9.\/, -()]+$/", $val)) {
                     $this->addError('alamat', 'Alamat must be alphanumeric');
                 }
             }
@@ -98,7 +98,7 @@
             if (empty($val)) {
                 $this->addError('jabatan', 'Jabatan is required');
             } else {
-                if (!preg_match("/^[a-zA-Z0-9]+$/", $val)) {
+                if (!preg_match("/^[a-zA-Z0-9 ]+$/", $val)) {
                     $this->addError('jabatan', 'Jabatan must be alphanumeric');
                 }
             }

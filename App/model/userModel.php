@@ -72,7 +72,7 @@
             $mysqlconn = new MysqlConn();
 
             // prepare Sql Statement
-            $sql = "SELECT * FROM appuser";
+            $sql = "SELECT * FROM appuser WHERE statusAktif = 1";
 
             if($stmt = $mysqlconn->conn->prepare($sql)) {
                 // Execute the statement
@@ -97,6 +97,36 @@
                 echo "Oops! Something went wrong. Please try again later.";
                 return null;
             }
+        }
+
+        public function createUser($userData) {
+            // Connect to the database
+            $mysqlconn = new MysqlConn();
+    
+            // Prepare an insert statement
+            $sql = "INSERT INTO appuser (userName, userPassword, idRole, namaLengkap, tanggalLahir, alamat, jabatan, noTelp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    
+            // Hash the password before storing it
+            // $hashedPassword = password_hash($userData['userPassword'], PASSWORD_DEFAULT);
+    
+            if ($stmt = $mysqlconn->conn->prepare($sql)) {
+                // Bind parameters to the prepared statement
+                $stmt->bind_param("ssisssss", $userData['userName'], $userData['userPassword'], $userData['idRole'], $userData['namaLengkap'], $userData['tanggalLahir'], $userData['alamat'], $userData['jabatan'], $userData['noTelp']);
+    
+                // Attempt to execute the prepared statement
+                if (!$stmt->execute()) {
+                    $this->errors['createUserErr'] = "Error: " . $stmt->error;
+                }
+            } else {
+                // Error in prepared statement
+                $this->errors['createUserErr'] = "Error: " . $mysqlconn->conn->error;
+            }
+
+            // Close statement
+            $stmt->close();
+    
+            // Close connection
+            $mysqlconn->conn->close();
         }
     }
 ?>

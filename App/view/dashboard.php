@@ -14,8 +14,6 @@
 <!-- head -->
 <head>
     <?php include "App/Layout/head.php";?>
-
-
     <script src="App/Js/script.js"></script>
     <title>Aplikasi Inventory dan Arsip</title>
 </head>
